@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 
 using Delivery.Request.Service.Application;
@@ -29,9 +30,9 @@ internal sealed class Startup
         services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen();
-
-        services.AddDbContext<DataContext>(x => x
-            .UseNpgsql(_configuration.GetConnectionString("postgres")));
+        
+        string connectionString = _configuration.GetConnectionString("postgres") ?? throw new InvalidOperationException();
+        services.AddDbContext<DataContext>(x => x.UseNpgsql(connectionString));
 
         Assembly[] assemblyNames =
         {

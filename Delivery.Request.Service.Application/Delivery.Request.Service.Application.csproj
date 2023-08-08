@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Delivery.Request.Service.Domain\Delivery.Request.Service.Domain.csproj" />
+      <ProjectReference Include="..\Delivery.Request.Service.Infrastructure.Abstractions\Delivery.Request.Service.Infrastructure.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>

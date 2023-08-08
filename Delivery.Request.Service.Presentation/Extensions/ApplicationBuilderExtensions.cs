@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Delivery.Request.Service.Presentation.Extensions;
 
-public static class ApplicationBuilderExtensions
+internal static class ApplicationBuilderExtensions
 {
     public static IApplicationBuilder EnsureMigrationOfContext<T>(this IApplicationBuilder app)
         where T : DbContext

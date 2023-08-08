@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Delivery.Request.Service.Presentation.Middlewares;
 
-public sealed class ExceptionInterceptor
+internal sealed class ExceptionInterceptor
 {
     private readonly RequestDelegate _next;
 

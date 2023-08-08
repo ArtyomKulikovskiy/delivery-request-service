@@ -4,5 +4,5 @@ namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Cont
 
 public sealed class DeleteDeliveryRequestCommand
 {
-    public Guid Id { get; init; }
+    public required Guid Id { get; init; }
 }

@@ -1,9 +1,10 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.SubmitForExecution;
 
 public class SubmitForExecutionDeliveryRequestCommand
 {
-    public Guid Id { get; init; }
-    public Guid CourierId { get; init; }
+    public required Guid Id { get; init; }
+    public required Guid CourierId { get; init; }
 }

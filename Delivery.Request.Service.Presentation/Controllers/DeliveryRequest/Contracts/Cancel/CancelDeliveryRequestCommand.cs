@@ -4,6 +4,6 @@ namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Cont
 
 public sealed class CancelDeliveryRequestCommand
 {
-    public Guid Id { get; init; }
-    public string CancellationReason { get; init; }
+    public required Guid Id { get; init; }
+    public required string CancellationReason { get; init; }
 }

@@ -35,6 +35,11 @@ public sealed class DeliveryRequest
 
     public static DeliveryRequest Create(string name, string description)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ApplicationException("Name must be provided");
+        }
+        
         var id = Guid.NewGuid();
         var status = DeliveryRequestStatus.New;
 
@@ -55,6 +60,11 @@ public sealed class DeliveryRequest
         if (Status is not DeliveryRequestStatus.New)
         {
             throw new ApplicationException("Can't update delivery request which status is not New");
+        }
+        
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ApplicationException("Name must be provided");
         }
 
         Name = name;
@@ -82,6 +92,11 @@ public sealed class DeliveryRequest
         if (Status is not DeliveryRequestStatus.SubmittedForExecution)
         {
             throw new ApplicationException("Can't cancel, when delivery request status is not SubmitForExecution");
+        }
+
+        if (string.IsNullOrEmpty(reason))
+        {
+            throw new ApplicationException("CancellationReason must be provided");
         }
 
         Status = DeliveryRequestStatus.Canceled;

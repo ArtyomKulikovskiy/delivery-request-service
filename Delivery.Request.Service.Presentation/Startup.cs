@@ -1,6 +1,6 @@
 using System;
 using System.Reflection;
-
+using System.Text.Json.Serialization;
 using Delivery.Request.Service.Application;
 using Delivery.Request.Service.Infrastructure;
 using Delivery.Request.Service.Presentation.Extensions;
@@ -25,14 +25,18 @@ internal sealed class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
+        services
+            .AddControllers()
+            .AddJsonOptions(opt => 
+                opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+        ;
 
         services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen();
         
         string connectionString = _configuration.GetConnectionString("postgres") ?? throw new InvalidOperationException();
-        services.AddDbContext<DataContext>(x => x.UseNpgsql(connectionString));
+        services.AddDbContext<DataContext>(opt => opt.UseNpgsql(connectionString));
 
         Assembly[] assemblyNames =
         {

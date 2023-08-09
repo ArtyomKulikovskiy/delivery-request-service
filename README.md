@@ -10,7 +10,7 @@
 2. На основе образа создаём контейнер, указываем пароль и логин в переменных POSTGRES_PASSWORD и POSTGRES_USER, а также выбираем порт Port
 3. Открываем репозиторий сервиса, в appsetting.json приводим значение value в "ConnectionStrings":{"Postgres":value} к виду value = "Host=localhost;Port={Port};Database=postgres;Username={POSTGRES_USER};Password={POSTGRES_PASSWORD}"
 4. Запускаем контейнер
-5. Запускаем сервис
+5. Запускаем сервис (http)
 
 Краткое описание ручек контроллера:
 1. Search - получаем список всех заявок, по query можно фильтровать записи

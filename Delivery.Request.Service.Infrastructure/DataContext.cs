@@ -11,7 +11,7 @@ public sealed class DataContext : DbContext
     {
     }
 
-    public DataContext(DbContextOptions optionsBuilder) : base(optionsBuilder)
+    public DataContext(DbContextOptions<DataContext> optionsBuilder) : base(optionsBuilder)
     {
     }
 

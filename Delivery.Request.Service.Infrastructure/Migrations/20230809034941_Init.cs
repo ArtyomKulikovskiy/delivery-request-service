@@ -16,6 +16,7 @@ namespace Delivery.Request.Service.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DeliveryId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     CourierId = table.Column<Guid>(type: "uuid", nullable: true),

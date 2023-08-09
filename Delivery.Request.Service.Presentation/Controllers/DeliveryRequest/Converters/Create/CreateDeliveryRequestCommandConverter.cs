@@ -7,7 +7,7 @@ internal static class CreateDeliveryRequestCommandConverter
 {
     public static CreateDeliveryRequestCommandInternal ToInternal(CreateDeliveryRequestCommand command)
     {
-        var response = new CreateDeliveryRequestCommandInternal(command.Name, command.Description);
+        var response = new CreateDeliveryRequestCommandInternal(command.DeliveryId, command.Name, command.Description);
 
         return response;
     }

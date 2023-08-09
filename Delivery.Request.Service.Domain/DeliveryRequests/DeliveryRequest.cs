@@ -14,9 +14,11 @@ public sealed class DeliveryRequest
         string description,
         Guid? courierId,
         string cancellationReason,
-        bool isDeleted)
+        bool isDeleted,
+        Guid deliveryId)
     {
         Id = id;
+        DeliveryId = deliveryId;
         Status = status;
         IsDeleted = isDeleted;
         Name = name;
@@ -26,6 +28,7 @@ public sealed class DeliveryRequest
     }
 
     public Guid Id { get; }
+    public Guid DeliveryId { get; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public Guid? CourierId { get; private set; }
@@ -33,7 +36,7 @@ public sealed class DeliveryRequest
     public string CancellationReason { get; private set; }
     public bool IsDeleted { get; private set; }
 
-    public static DeliveryRequest Create(string name, string description)
+    public static DeliveryRequest Create(Guid deliveryId, string name, string description)
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -45,6 +48,7 @@ public sealed class DeliveryRequest
 
         var response = new DeliveryRequest(
             id: id,
+            deliveryId: deliveryId,
             status: status,
             name: name,
             description: description,

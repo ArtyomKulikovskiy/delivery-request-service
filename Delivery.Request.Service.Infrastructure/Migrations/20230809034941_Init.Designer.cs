@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Delivery.Request.Service.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230807220718_Init")]
+    [Migration("20230809034941_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -36,6 +36,9 @@ namespace Delivery.Request.Service.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<Guid?>("CourierId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("DeliveryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")

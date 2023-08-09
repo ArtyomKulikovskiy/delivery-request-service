@@ -1,10 +1,9 @@
 using System;
-
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Enums;
 
-namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Search;
+namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.GetById;
 
-public sealed class SearchDeliveryRequestQueryResponseDeliveryRequest
+public class GetByIdDeliveryRequestQueryResponse
 {
     public Guid Id { get; init; }
     public Guid DeliveryId { get; init; }

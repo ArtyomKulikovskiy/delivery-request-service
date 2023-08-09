@@ -23,6 +23,7 @@ internal static class SearchDeliveryRequestQueryResponseConverter
         var response = new SearchDeliveryRequestQueryResponseDeliveryRequest
         {
             Id = deliveryRequest.Id,
+            DeliveryId = deliveryRequest.DeliveryId,
             CancellationReason = deliveryRequest.CancellationReason,
             CourierId = deliveryRequest.CourierId,
             Description = deliveryRequest.Description,

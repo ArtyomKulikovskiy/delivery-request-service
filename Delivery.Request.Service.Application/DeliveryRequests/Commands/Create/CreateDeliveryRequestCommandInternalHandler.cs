@@ -19,7 +19,7 @@ internal sealed class CreateDeliveryRequestCommandInternalHandler
         CreateDeliveryRequestCommandInternal request,
         CancellationToken cancellationToken)
     {
-        var deliveryRequest = Domain.DeliveryRequests.DeliveryRequest.Create(request.Name, request.Description);
+        var deliveryRequest = Domain.DeliveryRequests.DeliveryRequest.Create(request.DeliveryId, request.Name, request.Description);
 
         await _deliveryRequestRepository.Insert(deliveryRequest, cancellationToken);
 

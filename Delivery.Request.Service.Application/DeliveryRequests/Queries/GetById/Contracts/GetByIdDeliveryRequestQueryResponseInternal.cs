@@ -1,8 +1,8 @@
 using Delivery.Request.Service.Application.DeliveryRequests.Enums;
 
-namespace Delivery.Request.Service.Application.DeliveryRequests.Queries.Search.Contracts;
+namespace Delivery.Request.Service.Application.DeliveryRequests.Queries.GetById.Contracts;
 
-public sealed record SearchDeliveryRequestQueryResponseInternalDeliveryRequest(
+public sealed record GetByIdDeliveryRequestQueryResponseInternal(
     Guid Id,
     Guid DeliveryId,
     string Name,

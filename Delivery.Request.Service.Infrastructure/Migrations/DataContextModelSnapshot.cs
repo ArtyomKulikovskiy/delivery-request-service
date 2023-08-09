@@ -35,6 +35,9 @@ namespace Delivery.Request.Service.Infrastructure.Migrations
                     b.Property<Guid?>("CourierId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("DeliveryId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");

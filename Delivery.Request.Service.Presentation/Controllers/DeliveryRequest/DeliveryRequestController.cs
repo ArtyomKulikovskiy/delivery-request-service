@@ -7,11 +7,13 @@ using Delivery.Request.Service.Application.DeliveryRequests.Commands.Delete.Cont
 using Delivery.Request.Service.Application.DeliveryRequests.Commands.Execute.Contracts;
 using Delivery.Request.Service.Application.DeliveryRequests.Commands.SubmitForExecution.Contracts;
 using Delivery.Request.Service.Application.DeliveryRequests.Commands.Update.Contracts;
+using Delivery.Request.Service.Application.DeliveryRequests.Queries.GetById.Contracts;
 using Delivery.Request.Service.Application.DeliveryRequests.Queries.Search.Contracts;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Cancel;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Create;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Delete;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Execute;
+using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.GetById;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Search;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.SubmitForExecution;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.Update;
@@ -19,6 +21,7 @@ using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converte
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.Create;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.Delete;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.Execute;
+using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.GetById;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.Search;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.SubmitForExecution;
 using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Converters.Update;
@@ -139,5 +142,22 @@ public sealed class DeliveryRequestController : ControllerBase
         await _mediator.Send(commandInternal, cancellationToken);
 
         return NoContent();
+    }
+    
+    [ProducesResponseType(404)]
+    [ProducesResponseType(typeof(GetByIdDeliveryRequestQueryResponse), 200)]
+    [HttpPost(nameof(GetById))]
+    public async Task<IActionResult> GetById(
+        [FromBody] GetByIdDeliveryRequestQuery request,
+        CancellationToken cancellationToken)
+    {
+        GetByIdDeliveryRequestQueryInternal commandInternal = GetByIdDeliveryRequestQueryConverter
+            .ToInternal(request);
+
+        GetByIdDeliveryRequestQueryResponseInternal responseInternal = await _mediator.Send(commandInternal, cancellationToken);
+
+        GetByIdDeliveryRequestQueryResponse response = GetByIdDeliveryRequestQueryResponseConverter.FromInternal(responseInternal);
+        
+        return Ok(response);
     }
 }

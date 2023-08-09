@@ -13,7 +13,8 @@ internal sealed class DeliveryRequestEntityTypeConfiguration : IEntityTypeConfig
             .Property(x => x.Status)
             .IsRequired();
 
-        builder.Property(x => x.DeliveryId)
+        builder
+            .Property(x => x.DeliveryId)
             .IsRequired();
 
         builder

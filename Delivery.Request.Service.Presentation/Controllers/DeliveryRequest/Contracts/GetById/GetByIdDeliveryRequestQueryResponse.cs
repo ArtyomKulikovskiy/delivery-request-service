@@ -3,7 +3,7 @@ using Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Enums;
 
 namespace Delivery.Request.Service.Presentation.Controllers.DeliveryRequest.Contracts.GetById;
 
-public class GetByIdDeliveryRequestQueryResponse
+public sealed class GetByIdDeliveryRequestQueryResponse
 {
     public Guid Id { get; init; }
     public Guid DeliveryId { get; init; }
